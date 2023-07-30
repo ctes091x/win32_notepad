@@ -1,0 +1,13 @@
+#include "user32.as"
+#include "constant.as"
+; #uselib "user32.dll"
+; #func global MessageB
+; #func global CreateWindowA "CreateWindowA" sptr, sptr, sptr, sptr, sptr, sptr, sptr, sptr, sptr, sptr, sptr
+#define WS_WANTRETURN 0x1000
+
+bmscr = 0
+mref bmscr, 67
+hinst = bmscr(14)
+
+EDITCONTROL_STYLE = WS_CHILD | WS_VISIBLE | WS_WANTRETURN | ES_MULTILINE | ES_AUTOVSCROLL | WS_VSCROLL | ES_AUTOSCROLL | WS_HSCROLL
+CreateWindowExA 0, "EDIT", "", EDITCONTROL_STYLE, 0, 0, 640, 480, hwnd, hinst, "", hwnd
