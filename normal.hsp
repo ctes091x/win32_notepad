@@ -1,0 +1,28 @@
+title "無題 - HSP標準機能で作るメモ帳クローン"
+
+notesel txbf
+
+pos 0, 0 : button "open", *open
+pos 70, 0 : button "save", *save
+pos 0, : mesbox txbf, 640, 460, 13, 0
+
+stop
+
+*open
+    dialog "txt", 16
+    if(stat == 1){
+        filename = refstr
+        noteload filename
+        objprm 2, txbf
+        title getpath(filename, 8) + " - HSP標準機能で作るメモ帳クローン"
+    }
+    stop
+
+*save
+    dialog "txt", 17
+    if(stat == 1){
+        filename = refstr
+        notesave filename
+        title getpath(filename, 8) + " - HSP標準機能で作るメモ帳クローン"
+    }
+    stop
